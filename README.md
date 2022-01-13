@@ -1,16 +1,34 @@
-# thein_test
+# theIn test
 
-A new Flutter project.
+# General Overview
+This is a test to test my flutter knowledge by TheIN. the application displays Iphone models and images.
 
-## Getting Started
+### Installation
+1. Clone this repository into your local machine:
 
-This project is a starting point for a Flutter application.
+```
+git clone https://github.com/bihire/FlutterTechincalTask.git
+```
+2. Install dependencies 
+```
+- flutter pub get.
+```
+```
+- flutter run --profile
+```
 
-A few resources to get you started if this is your first Flutter project:
+## Screenshot
+![Alt text](https://i.imgur.com/kzvbMe7.png)
+ 
+## Built With
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Flutter
+
+## Author
+
+- Bihire jules boris
+
+## License
+ISC
+
