@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:thein_test/common/constants.dart';
 import 'package:thein_test/models/exhibit.dart';
 
@@ -23,31 +24,46 @@ class ExhibitCardState extends State<ExhibitCard> {
   }
 
   Widget _buildImageBox(String image) {
-    return FadeInImage(
-      image: NetworkImage(image),
-      placeholder: const AssetImage('assets/img/tech.jpeg'),
-      imageErrorBuilder: (context, error, stackTrace) {
-        return Image.asset('assets/img/tech.jpeg', fit: BoxFit.fitWidth);
-      },
-      fit: BoxFit.cover,
-    );
+    return AspectRatio(
+      aspectRatio: 1,
+      child: Padding(
+        padding: const EdgeInsets.only(right: 10),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(10),
+          child: FadeInImage(
+            image: NetworkImage(image),
+            placeholder: const AssetImage('assets/img/tech.jpeg'),
+            imageErrorBuilder: (context, error, stackTrace) {
+              return Image.asset('assets/img/tech.jpeg', fit: BoxFit.cover);
+            },
+            fit: BoxFit.cover,
+          ),
+        ),
+      ),
+      );
   }
 
 
   Widget _buildexhibitsCard(n) {
-    return GridView.count(
-        mainAxisSpacing: 4,
-        crossAxisSpacing: 2,
-        crossAxisCount: 3,
-        physics:
-            const NeverScrollableScrollPhysics(), // to disable GridView's scrolling
-        shrinkWrap: true, // You won't see infinite size error
-        children: _buildexhibitImages(n));
+    return Container(
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(
+            minHeight: 35.0,
+            maxHeight: 160.0,
+          ),
+          child:ListView.builder(
+            padding: const EdgeInsets.symmetric(horizontal: 15),
+      scrollDirection: Axis.horizontal,
+      itemCount: n.length,
+      itemBuilder: (BuildContext context, int index) {
+        return _buildImageBox(n[index]);
+      })));
   }
 
   Widget _buildexhibitTitle() {
     return Container(
         padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 15),
+        margin: const EdgeInsets.symmetric(horizontal: 15),
         decoration: BoxDecoration(
           color: lightGreyColor,
           borderRadius: BorderRadius.circular(4)
@@ -71,7 +87,7 @@ class ExhibitCardState extends State<ExhibitCard> {
         Expanded(
             child: Container(
                 padding:
-                    const EdgeInsets.only(top: 7, bottom: 7, left: 7, right: 0),
+                    const EdgeInsets.only(top: 7, bottom: 7, left: 0, right: 0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisSize: MainAxisSize.min,

@@ -45,19 +45,27 @@ class _HomeWidgetState extends State<HomeWidget> {
         ),
         backgroundColor: primaryLightColor,
         systemOverlayStyle:
-            const SystemUiOverlayStyle(statusBarColor: Colors.transparent),
+            const SystemUiOverlayStyle(
+              statusBarColor: Colors.transparent,
+              statusBarIconBrightness: Brightness.dark,
+              ),
       ),
       body: FutureBuilder<List<Exhibit>>(
         future: futureAlbum,
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            return ListView.builder(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 15, vertical: 30),
-                itemCount: snapshot.data!.length,
-                itemBuilder: (BuildContext context, int index) {
-                  return ExhibitCard(exhibit: snapshot.data![index]);
-                });
+            return CustomScrollView(
+              slivers: [
+                const SliverToBoxAdapter(
+                  child: SizedBox(height: 30,),
+                ),
+                SliverList(
+                  delegate: SliverChildBuilderDelegate((context, index) {
+                return ExhibitCard(exhibit: snapshot.data![index]);
+              },
+              childCount: snapshot.data!.length))
+              ],
+            );
           } else if (snapshot.hasError) {
             return Text('${snapshot.error}');
           }
