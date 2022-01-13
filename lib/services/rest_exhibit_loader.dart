@@ -4,7 +4,7 @@ import 'package:thein_test/models/exhibit.dart';
 import 'package:http/http.dart' as http;
 import 'package:thein_test/services/exhibit_loader.dart';
 
-class ExhibitsGet implements ExhibitsLoader {
+class RestExhibitsLoader implements ExhibitsLoader {
   @override
   Future<List<Exhibit>> getExhibitList() async {
     final response = await http.get(

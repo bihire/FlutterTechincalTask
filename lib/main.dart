@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:thein_test/common/constants.dart';
 import 'package:thein_test/components/exhibit_card.dart';
 import 'package:thein_test/models/exhibit.dart';
-import 'package:thein_test/services/exhibit_http_call.dart';
+import 'package:thein_test/services/rest_exhibit_loader.dart';
 
 void main() {
   runApp(const MyApp());
@@ -32,7 +32,7 @@ class _HomeWidgetState extends State<HomeWidget> {
   @override
   void initState() {
     super.initState();
-    futureAlbum = ExhibitsGet().getExhibitList();
+    futureAlbum = RestExhibitsLoader().getExhibitList();
   }
 
   @override
