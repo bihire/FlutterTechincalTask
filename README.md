@@ -18,7 +18,7 @@ git clone https://github.com/bihire/FlutterTechincalTask.git
 ```
 
 ## Screenshot
-![Alt text](https://imgur.com/a/vhjuA2v)
+![Alt text](https://i.imgur.com/kzvbMe7.png)
  
 ## Built With
 
